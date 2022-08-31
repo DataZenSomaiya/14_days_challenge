@@ -3,6 +3,6 @@
 <hr>
 1. Forking the Datazen repo:
     Fork the datazen repository.
-    ![This is an image](./images/Fork_1.jpg)
+    ![](https://github.com/DataZenSomaiya/14_days_challenge/blob/main/images/Fork_1.jpg)
     
 
