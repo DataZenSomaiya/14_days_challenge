@@ -8,7 +8,8 @@
 
  - Fork the datazen repository.
    <br>
- - <img src = https://github.com/DataZenSomaiya/14_days_challenge/blob/main/images/Fork_1.jpg width=1000 height=400>
+ - <img src=https://user-images.githubusercontent.com/86959077/187641270-d02f23bd-4857-4083-81db-65b829a31743.jpg>
+
    <br>
  - ![fork-2](https://user-images.githubusercontent.com/86959077/187630084-b85da9c6-b6b4-47e4-b191-b91e1002d41e.jpg)
    <br>
