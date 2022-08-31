@@ -47,32 +47,32 @@
   
   5. Create a folder and give it your name 
   <br>  
-  ![create_folder](https://user-images.githubusercontent.com/86959077/187636551-4371589a-7a5e-46c0-af5a-a60037373821.jpg)
+  <img src = https://user-images.githubusercontent.com/86959077/187636551-4371589a-7a5e-46c0-af5a-a60037373821.jpg>
   <br>
   <hr>
   <br>
   6. Add commit and push your changes
   <br>
-  ![add_changes](https://user-images.githubusercontent.com/86959077/187636827-1fdffe1c-0e47-4e94-8216-6b1c1df5332d.jpg)
+  <img src=https://user-images.githubusercontent.com/86959077/187636827-1fdffe1c-0e47-4e94-8216-6b1c1df5332d.jpg>
   <br>
-  ![commit_chenges](https://user-images.githubusercontent.com/86959077/187636951-28ea2f03-d262-40bb-b03d-36850ea86c07.jpg)
+  <img src=https://user-images.githubusercontent.com/86959077/187636951-28ea2f03-d262-40bb-b03d-36850ea86c07.jpg>
   <br>
-  ![push_changes](https://user-images.githubusercontent.com/86959077/187637028-d6165a58-821d-4d52-8a1a-a5f88221e155.jpg)
+  <img src = https://user-images.githubusercontent.com/86959077/187637028-d6165a58-821d-4d52-8a1a-a5f88221e155.jpg>
   <br>
   <hr>
   <br>
   
   7. Compare and Create Pull Request
   <br>
-  ![compare_pull_request](https://user-images.githubusercontent.com/86959077/187637252-aad94bbd-46de-4aca-b78e-bf61a5c7f192.jpg)
+  <img src=https://user-images.githubusercontent.com/86959077/187637252-aad94bbd-46de-4aca-b78e-bf61a5c7f192.jpg>
   <br>
-  ![create_pull_request](https://user-images.githubusercontent.com/86959077/187637340-648cb1ab-b6df-4a9a-890a-764bffee954d.jpg)
+  <img src = https://user-images.githubusercontent.com/86959077/187637340-648cb1ab-b6df-4a9a-890a-764bffee954d.jpg>
   <br>
   <hr>
   
   8. edit the name of the pull request as your firstname_lastname
   <br>
-  ![edit_name_for_pr](https://user-images.githubusercontent.com/86959077/187637834-96da2b1d-01f1-4b09-b819-059ffa27c60b.jpg)
+  <img src = https://user-images.githubusercontent.com/86959077/187637834-96da2b1d-01f1-4b09-b819-059ffa27c60b.jpg>
   <br>
   <hr>
   
