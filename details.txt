@@ -1,2 +1,0 @@
-Name: First_name Last_name
-Email-ID : abcd@email.com
