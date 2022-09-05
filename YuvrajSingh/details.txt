@@ -1,6 +1,2 @@
-cd 14_days_challenge
-git checkout YuvrajSingh
-git pull
-git add .
-git commit -m "my second comment"
-git push
+Name - Yuvraj Singh
+Email - yuvraj.singgh@somaiya.edu
