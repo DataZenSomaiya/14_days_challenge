@@ -1,0 +1,3 @@
+installed pycharm
+installed python
+installed jupyter notebook
