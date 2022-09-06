@@ -4,3 +4,8 @@
 [Colab File for Linear Regression](https://colab.research.google.com/drive/1_8l_bXxLN6keQ_r08KREE_YQBDX1LTqY) 
 - Refer to this colab file 
 - Do not forget to import `housing data` csv file
+
+## Learnings of Day 2
+
+- Read and understood the meaning and implementation of Linear Regression.
+- Practiced basic Linear Regression on a simple dataset.
