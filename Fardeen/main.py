@@ -20,6 +20,15 @@ class Car(pygame.sprite.Sprite):
         self.vel_vector = pygame.math.Vcetor2(0.8, 0)
         self.angle = 0
 
+    #updates the position and angle every time called 
+    def update(self):
+        self.drive()
+        self.update()
+
+    #changes the pos of car accordingly
+    def drive(self):
+        if self.drive_state:
+            self.rect.center += self.vel_vector * 6
 
 #main function
 def eval_genomes():
