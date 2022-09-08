@@ -30,6 +30,12 @@ class Car(pygame.sprite.Sprite):
         if self.drive_state:
             self.rect.center += self.vel_vector * 6
 
+    def rotate(self):
+        self.image = pygame.transform.rotozoom(self.original_image, self.angle, 0.1)
+
+
+car = pygame.sprite.GroupSingle(Car())
+
 #main function
 def eval_genomes():
     run = True
@@ -40,6 +46,15 @@ def eval_genomes():
                 sys.exit()
 
         SCREEN.blit(TRACK, (0,0))
+
+        #taking input from the user 
+        user_input = pygame.key.get_pressed()
+        if sum(pygame.key.get_pressed) <= 1:
+            car.sprite.drive_state = False
+
+        #drive
+        if user_input[pygame.K_UP]:
+            car.sprite.drive_state= True
 
 eval_genomes()
         
