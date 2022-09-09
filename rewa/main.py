@@ -1,11 +1,12 @@
-# import requests module
+from bs4 import BeautifulSoup
 import requests
-
-# Making a get request
-response = requests.get('http://api.github.com')
-
-# print response
-print(response)
-
-# print url
-print(response.url)
+response = requests.get('https://en.wikipedia.org/wiki/India')
+print(response.status_code)
+src = response.content
+soup = BeautifulSoup(src , 'lxml')
+links = soup.find_all("a")
+print(links)
+for link in links :
+    if "languages" in link.text :
+        print(link)
+        print(link.attrs['href'])
