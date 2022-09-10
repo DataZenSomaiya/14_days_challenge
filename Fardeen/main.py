@@ -19,7 +19,7 @@ class Car(pygame.sprite.Sprite):
         self.drive_state = False
         self.vel_vector = pygame.math.Vector2(0.8, 0)
         self.angle = 0
-        self.rotation_vel = 0
+        self.rotation_vel = 5
         self.direction = 0
 
     #updates the position and angle every time called 
@@ -60,10 +60,18 @@ def eval_genomes():
         user_input = pygame.key.get_pressed()
         if sum(pygame.key.get_pressed()) <= 1:
             car.sprite.drive_state = False
+            car.sprite.direction = 0
 
         #drive
         if user_input[pygame.K_UP]:
             car.sprite.drive_state= True
+
+        #steering
+        if user_input[pygame.K_RIGHT]:
+            car.sprite.direction = 1
+            
+        if user_input[pygame.K_LEFT]:
+            car.sprite.direction = -1
 
         #update
         car.draw(SCREEN)
