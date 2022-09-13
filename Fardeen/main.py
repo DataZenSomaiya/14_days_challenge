@@ -21,18 +21,31 @@ class Car(pygame.sprite.Sprite):
         self.angle = 0
         self.rotation_vel = 5
         self.direction = 0
+        self.alive = True
 
     #updates the position and angle every time called 
     def update(self):
         self.drive()
         self.rotate()
-        self.radar()
+        for radar_angle in (-60, -30, 0, 30, 60):
+            self.radar(radar_angle)
+        self.collision()
 
     #changes the pos of car accordingly
     def drive(self):
         if self.drive_state:
             self.rect.center += self.vel_vector * 6
 
+    def collision(self):
+        length = 40
+        collision_point_right = [int(self.rect.center[0] + math.cos(math.radians(self.angle + 18)) * length),
+                                int(self.rect.center[1] - math.sin(math.radians(self.angle + 18)) * length)]
+        collision_point_left = [int(self.rect.center[0] + math.cos(math.radians(self.angle - 18)) * length),
+                                int(self.rect.center[1] - math.sin(math.radians(self.angle - 18)) * length)]
+        #die on collision
+        if SCREEN.get_at(collision_point_right) == pygame.Color(2, 105, 31, 255) or SCREEN.get_at(collision_point_left) == pygame.Color(2, 105, 31, 255):
+            self.alive = False
+            print("BOOM!, Car crashed!")
     def rotate(self):
         if self.direction == 1:
             self.angle -= self.rotation_vel
@@ -44,7 +57,7 @@ class Car(pygame.sprite.Sprite):
         self.image = pygame.transform.rotozoom(self.original_image, self.angle, 0.1)
         self.rect = self.image.get_rect(center=self.rect.center)
 
-    def radar(self):
+    def radar(self, radar_angle):
         length=0
         # getting coordinates of the center of the car 
         x = int(self.rect.center[0])
@@ -52,8 +65,8 @@ class Car(pygame.sprite.Sprite):
 
         while not SCREEN.get_at((x, y)) == pygame.Color(2, 105, 31, 255) and length<200:
             length += 1
-            x = int(self.rect.center[0] + math.cos(math.radians(self.angle)) * length)
-            y = int(self.rect.center[1] - math.sin(math.radians(self.angle)) * length)
+            x = int(self.rect.center[0] + math.cos(math.radians(self.angle + radar_angle)) * length)
+            y = int(self.rect.center[1] - math.sin(math.radians(self.angle + radar_angle)) * length)
 
         #drawing radar
         pygame.draw.line(SCREEN, (255,255,255,255), self.rect.center, (x, y), 1)
