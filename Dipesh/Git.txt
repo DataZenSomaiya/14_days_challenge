@@ -1,3 +1,0 @@
-Hello Git
-Name : Dipesh Khichada
-Email : dipesh.khichada@somaiya.edu
