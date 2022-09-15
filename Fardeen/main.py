@@ -16,25 +16,26 @@ class Car(pygame.sprite.Sprite):
         self.original_image = pygame.image.load(os.path.join("assets", "car.png"))
         self.image = self.original_image
         self.rect = self.image.get_rect(center = (490, 820))
-        self.drive_state = False
         self.vel_vector = pygame.math.Vector2(0.8, 0)
         self.angle = 0
         self.rotation_vel = 5
         self.direction = 0
         self.alive = True
+        radars = []
 
     #updates the position and angle every time called 
     def update(self):
+        self.radars.clear()
         self.drive()
         self.rotate()
         for radar_angle in (-60, -30, 0, 30, 60):
             self.radar(radar_angle)
         self.collision()
+        self.data()
 
     #changes the pos of car accordingly
     def drive(self):
-        if self.drive_state:
-            self.rect.center += self.vel_vector * 6
+        self.rect.center += self.vel_vector * 6
 
     def collision(self):
         length = 40
@@ -72,8 +73,9 @@ class Car(pygame.sprite.Sprite):
         pygame.draw.line(SCREEN, (255,255,255,255), self.rect.center, (x, y), 1)
         pygame.draw.circle(SCREEN, (0, 255, 0, 0), (x, y), 3)
 
+        dist = int(math.sqrt(math.pow(self.rect.center[0]-x, 2)+math.pow(self.rect.center[1]-y, 2)))
 
-car = pygame.sprite.GroupSingle(Car())
+        self.radars.append([radar_angle, dist])#329
 
 #main function
 def eval_genomes():
@@ -86,22 +88,7 @@ def eval_genomes():
 
         SCREEN.blit(TRACK, (0,0))
 
-        #taking input from the user 
-        user_input = pygame.key.get_pressed()
-        if sum(pygame.key.get_pressed()) <= 1:
-            car.sprite.drive_state = False
-            car.sprite.direction = 0
-
-        #drive
-        if user_input[pygame.K_UP]:
-            car.sprite.drive_state= True
-
-        #steering
-        if user_input[pygame.K_RIGHT]:
-            car.sprite.direction = 1
-            
-        if user_input[pygame.K_LEFT]:
-            car.sprite.direction = -1
+       
 
         #update
         car.draw(SCREEN)
@@ -109,5 +96,4 @@ def eval_genomes():
         pygame.display.update()
 
 
-eval_genomes()
         
