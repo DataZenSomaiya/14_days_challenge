@@ -1,3 +1,4 @@
+from __future__ import nested_scopes
 import pygame
 import os
 import sys
@@ -75,10 +76,28 @@ class Car(pygame.sprite.Sprite):
 
         dist = int(math.sqrt(math.pow(self.rect.center[0]-x, 2)+math.pow(self.rect.center[1]-y, 2)))
 
-        self.radars.append([radar_angle, dist])#329
+        self.radars.append([radar_angle, dist])
 
+    def data(self):
+        input = [0, 0, 0, 0, 0]
+        for i, radar in enumerate(self.radars):
+            input[i] = int(radar[1])
+        return input 
+
+def remove(self):
+    cars.pop(index)
+    ge.pop(index)
+    nets.pop(index)  
+
+   
 #main function
-def eval_genomes():
+def eval_genomes(genomes, config):
+    global cars, ge, nets 
+
+    cars = []
+    ge = []
+    nets = []
+
     run = True
     while run: 
         for event in pygame.event.get():
