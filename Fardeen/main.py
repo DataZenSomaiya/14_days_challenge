@@ -3,6 +3,8 @@ import pygame
 import os
 import sys
 import math
+import neat
+
 
 screen_width = 1244
 screen_height = 1016
@@ -84,7 +86,7 @@ class Car(pygame.sprite.Sprite):
             input[i] = int(radar[1])
         return input 
 
-def remove(self):
+def remove(index):
     cars.pop(index)
     ge.pop(index)
     nets.pop(index)  
@@ -98,6 +100,13 @@ def eval_genomes(genomes, config):
     ge = []
     nets = []
 
+    for genome_id, genome in genomes:
+        cars.append(pygame.sprite.GroupSingle(Car()))
+        ge.append(genome)
+        net = neat.nn.FeedForwardNetwork.create(genome, config)
+        nets.append(net)
+        genome.fitness = 0
+
     run = True
     while run: 
         for event in pygame.event.get():
@@ -107,12 +116,48 @@ def eval_genomes(genomes, config):
 
         SCREEN.blit(TRACK, (0,0))
 
-       
+        if len(cars) == 0:
+            break       
 
+        for i, car in enumerate(cars):
+            ge[i].fitness += 1
+            if not car.sprite.alive:
+                remove(i)
+
+        for i, car in enumerate(cars):
+            output = nets[i].activate(car.sprite.data())
+            if output[0] > 0.7:
+                car.sprite.direction = 1
+            if output[1] > 0.7:
+                car.sprite.direction = -1
+            if output[0] <= 0.7 and output[1] <= 0.7:
+                car.sprite.direction = 0
+        
         #update
         car.draw(SCREEN)
         car.update()
         pygame.display.update()
 
 
-        
+def run(config_path):
+    global pop
+    config = neat.config.Config(
+        neat.DefaultGenome,
+        neat.DefaultReproduction,
+        neat.DefaultSpeciesSet,
+        neat.DefaultStagnation,
+        config_path
+    )        
+
+    pop = neat.Population(config)
+
+    pop.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+    pop.add_reporter(stats)
+
+    pop.run(eval_genomes, 50)
+
+if __name__ == '__main__':
+    local_dir = os.path.dirname(__file__)
+    config_path = os.path.join(local_dir, 'config.txt')
+    run(config_path)
